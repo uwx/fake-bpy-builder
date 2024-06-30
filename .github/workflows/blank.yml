@@ -179,7 +179,7 @@ jobs:
           git fetch origin && git reset --hard origin || true
           popd
 
-          cp -rf release /tmp/fbpy
+          rsync -avh --progress release/ /tmp/fbpy/
 
           pushd /tmp/fbpy
           git push -f --allow-unrelated-histories -u origin blender/${{ matrix.blender_version }}
