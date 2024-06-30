@@ -64,7 +64,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        repository: 'nutti/fake-bpy-module'
+        with:
+          repository: 'nutti/fake-bpy-module'
 
       - name: Set up Python
         uses: actions/setup-python@v5
