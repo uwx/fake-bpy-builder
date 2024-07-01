@@ -167,7 +167,7 @@ jobs:
         run: |
           mkdir /tmp/fbpy
 
-          pushd /tmp/fbpy
+          cd /tmp/fbpy
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git config pull.rebase true
@@ -177,13 +177,13 @@ jobs:
           git remote add origin https://github.com/uwx/fake-bpy-builder.git
           
           git fetch origin && git reset --hard origin || true
-          popd
+          cd ~/work/fake-bpy-builder/fake-bpy-builder
 
           rsync -avh --progress release/ /tmp/fbpy/
 
-          pushd /tmp/fbpy
+          cd /tmp/fbpy
           git push -f --allow-unrelated-histories -u origin blender/${{ matrix.blender_version }}
-          popd
+          cd ~/work/fake-bpy-builder/fake-bpy-builder
         
   upload_github_release_assets:
     name: Upload Artifacts to GitHub Release
